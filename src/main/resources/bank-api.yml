@@ -1,0 +1,31 @@
+openapi: 3.0.3
+info:
+  version: 1.0.0
+  title: 'Bank API'
+  description: 'Bank API Spec'
+tags:
+  - name: Bank
+    description: Bank spec
+paths:
+  /bank/customer:
+    get:
+      summary: 'Retrieve a list of bank customers'
+      description: Get request
+      operationId: 'getCustomers'
+      tags:
+        - Bank
+      responses:
+        '200':
+          $ref: '#/components/responses/ListCustomers'
+components:
+  responses:
+    ListCustomers:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/customerModel'
+  schemas:
+    customerModel:
+      type: object
+      description: Links to the Customer.java class via the pom.xml
