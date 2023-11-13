@@ -11,20 +11,21 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Customer")
+@Table(name="BankAccount")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Customer {
+public class BankAccount {
 
     @Id
-    @Column(name = "CUSTOMER_ID", nullable = false)
+    @Column(name = "ACCOUNT_ID", nullable = false)
+    private Integer bankAccountNumber;
+
+    @Column(name = "ACCOUNT_TYPE")
+    private String bankAccountType;
+
+    @Column(name = "CUSTOMER_ID")
     private Integer customerId;
 
-    @Column(name = "CUSTOMER_NAME", nullable = true)
-    private String customerName;
-
-    @Column(name = "CUSTOMER_AGE")
-    private Integer customerAge;
 }
