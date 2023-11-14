@@ -5,13 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name="BankAccount")
+@Table(name="Bank_Account")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -25,7 +22,11 @@ public class BankAccount {
     @Column(name = "ACCOUNT_TYPE")
     private String bankAccountType;
 
-    @Column(name = "CUSTOMER_ID")
-    private Integer customerId;
+    /**
+     * Foreign key pointing to the customer ID column in the Customer table.
+     */
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "CUSTOMER_ID", referencedColumnName = "CUSTOMER_ID")
+    private Customer customer;
 
 }
