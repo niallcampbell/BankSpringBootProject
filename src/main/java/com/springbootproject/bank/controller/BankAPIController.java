@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * Controller class for the Bank API.
+ */
 @RestController
 @Slf4j
 @RequiredArgsConstructor
@@ -19,6 +22,10 @@ public class BankAPIController implements BankApi {
     @Autowired
     CustomerRepository customerRepository;
 
+    /**
+     * GET '/customers' endpoint.
+     * @return ResponseEntity containing a list of the Customer objects in the DB.
+     */
     @Override
     public ResponseEntity<List<Customer>> getCustomers() {
         List<Customer> bankCustomers = customerRepository.findAll();

@@ -7,6 +7,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+/**
+ * Entity class for BankAccount.
+ * Maps to the Bank_Account table in the DB.
+ */
 @Entity
 @Table(name="Bank_Account")
 @AllArgsConstructor
@@ -23,7 +27,9 @@ public class BankAccount {
     private String bankAccountType;
 
     /**
-     * Foreign key pointing to the customer ID column in the Customer table.
+     * BankAccount has a CUSTOMER_ID column.
+     * The @JoinColumn annotation adds a foreign key constraint pointing
+     * to the customer ID column in the Customer table.
      */
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "CUSTOMER_ID", referencedColumnName = "CUSTOMER_ID")

@@ -10,6 +10,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Entity class for Customer.
+ * Maps to the Customer table in the DB.
+ */
 @Entity
 @Table(name="Customer")
 @AllArgsConstructor

@@ -7,7 +7,7 @@ tags:
   - name: Bank
     description: Bank spec
 paths:
-  /bank/customers:
+  /customers:
     get:
       summary: 'Retrieve a list of bank customers'
       description: Get request
