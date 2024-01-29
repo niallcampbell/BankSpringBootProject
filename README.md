@@ -3,6 +3,7 @@
 Project containing the basics of a Spring Boot API. 
 
 The API endpoints can be accessed here when the app is running locally:
+
 http://localhost:8080/swagger-ui/index.html
 
 
@@ -15,4 +16,6 @@ The app contains two types of objects:
 ## Endpoints
 
 * GET /customers
+
+* GET /bankaccounts
 

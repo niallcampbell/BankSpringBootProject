@@ -89,7 +89,8 @@
 							<generateApis>true</generateApis>
 							<generateApiTests>false</generateApiTests>
 							<schemaMappings>
-								customerModel=com.springbootproject.bank.entities.Customer
+								customerModel=com.springbootproject.bank.entities.Customer,
+								bankAccountModel=com.springbootproject.bank.entities.BankAccount
 							</schemaMappings>
 							<configOptions>
 								<sourceFolder>src/main/java</sourceFolder>

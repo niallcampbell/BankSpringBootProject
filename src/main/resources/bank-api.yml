@@ -17,6 +17,16 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListCustomersResponse'
+  /bankaccounts:
+    get:
+      summary: 'Retrieve a list of bank accounts'
+      description: Get request
+      operationId: 'getBankAccounts'
+      tags:
+        - Bank
+      responses:
+        '200':
+          $ref: '#/components/responses/ListBankAccountsResponse'
 components:
   responses:
     ListCustomersResponse:
@@ -25,6 +35,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/customersList'
+    ListBankAccountsResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/bankAccountsList'
   schemas:
     customersList:
       description: A list of the Customer objects
@@ -34,3 +50,11 @@ components:
     customerModel:
       type: object
       description: Links to the Customer.java class via the pom.xml
+    bankAccountsList:
+      description: A list of the Bank Account objects
+      type: array
+      items:
+        $ref: '#/components/schemas/bankAccountModel'
+    bankAccountModel:
+      type: object
+      description: Links to the BankAccount.java class via the pom.xml

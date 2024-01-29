@@ -27,7 +27,7 @@ public class BankAccount {
     private String bankAccountType;
 
     /**
-     * BankAccount has a CUSTOMER_ID column.
+     * BankAccount has a column called CUSTOMER_ID which is a FK linked to the PK CUSTOMER_ID column of Customer.
      * The @JoinColumn annotation adds a foreign key constraint pointing
      * to the customer ID column in the Customer table.
      */
