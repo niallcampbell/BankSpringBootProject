@@ -17,6 +17,18 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListCustomersResponse'
+  /customers/{customer-id}:
+    get:
+      summary: 'Retrieve a customer for a given ID'
+      description: Get request
+      operationId: 'getCustomerByID'
+      tags:
+        - Bank
+      parameters:
+        - $ref: '#/components/parameters/customer-id'
+      responses:
+        '200':
+          $ref: '#/components/responses/CustomerIdResponse'
   /bankaccounts:
     get:
       summary: 'Retrieve a list of bank accounts'
@@ -35,6 +47,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/customersList'
+    CustomerIdResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/customerModel'
     ListBankAccountsResponse:
       description: OK
       content:
@@ -58,3 +76,12 @@ components:
     bankAccountModel:
       type: object
       description: Links to the BankAccount.java class via the pom.xml
+  parameters:
+    customer-id:
+      name: customer-id
+      in: path
+      schema:
+        type: integer
+      required: true
+      description: Customer ID
+      example: 123

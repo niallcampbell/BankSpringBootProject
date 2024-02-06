@@ -3,6 +3,7 @@ package com.springbootproject.bank.controller;
 import com.springbootproject.bank.api.BankApi;
 import com.springbootproject.bank.entities.BankAccount;
 import com.springbootproject.bank.entities.Customer;
+import com.springbootproject.bank.exceptions.BankResourceNotFoundException;
 import com.springbootproject.bank.repo.BankAccountRepository;
 import com.springbootproject.bank.repo.CustomerRepository;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +36,23 @@ public class BankAPIController implements BankApi {
     public ResponseEntity<List<Customer>> getCustomers() {
         List<Customer> bankCustomers = customerRepository.findAll();
         return ResponseEntity.ok(bankCustomers);
+    }
+
+    /**
+     * Endpoint returns a Customer object for a given ID.
+     * If a customer does not belong to the provided ID, then a BankResourceNotFoundException
+     * is thrown.
+     *
+     * @param customerId Customer ID (required)
+     * @return ResponseEntity containing the Customer object.
+     */
+    @Override
+    public ResponseEntity<Customer> getCustomerByID(Integer customerId) {
+        Customer customer = customerRepository.findByCustomerId(customerId);
+        if(customer == null) {
+            throw new BankResourceNotFoundException(String.format("Customer not found for id: %d", customerId));
+        }
+        return ResponseEntity.ok(customer);
     }
 
     /**
