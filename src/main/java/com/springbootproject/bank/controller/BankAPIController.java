@@ -65,4 +65,21 @@ public class BankAPIController implements BankApi {
         return ResponseEntity.ok(bankAccounts);
     }
 
+    /**
+     * Endpoint returns a Bank Account object for a given Bank Account Number.
+     * If a Bank Account does not belong to the provided value, then a BankResourceNotFoundException
+     * is thrown.
+     *
+     * @param bankAccountNumber Bank Account ID (required)
+     * @return Response Entity containing the Bank Account object.
+     */
+    @Override
+    public ResponseEntity<BankAccount> getBankAccountByID(Integer bankAccountNumber) {
+        BankAccount bankAccount = bankAccountRepository.findByBankAccountNumber(bankAccountNumber);
+        if(bankAccount == null) {
+            throw new BankResourceNotFoundException(String.format("Bank Account not found for id: %d", bankAccountNumber));
+        }
+        return ResponseEntity.ok(bankAccount);
+    }
+
 }

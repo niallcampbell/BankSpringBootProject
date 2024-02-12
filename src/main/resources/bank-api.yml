@@ -39,6 +39,18 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListBankAccountsResponse'
+  /bankaccounts/{bankAccountNumber}:
+    get:
+      summary: 'Retrieve a Bank Account for a given Bank Account Number'
+      description: Get request
+      operationId: 'getBankAccountByID'
+      tags:
+        - Bank
+      parameters:
+        - $ref: '#/components/parameters/bankAccountNumber'
+      responses:
+        '200':
+          $ref: '#/components/responses/BankAccountIdResponse'
 components:
   responses:
     ListCustomersResponse:
@@ -59,6 +71,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/bankAccountsList'
+    BankAccountIdResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/bankAccountModel'
   schemas:
     customersList:
       description: A list of the Customer objects
@@ -84,4 +102,12 @@ components:
         type: integer
       required: true
       description: Customer ID
+      example: 123
+    bankAccountNumber:
+      name: bankAccountNumber
+      in: path
+      schema:
+        type: integer
+      required: true
+      description: Bank Account Number
       example: 123

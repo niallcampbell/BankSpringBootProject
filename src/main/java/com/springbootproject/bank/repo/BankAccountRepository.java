@@ -10,4 +10,10 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface BankAccountRepository extends JpaRepository<BankAccount, Integer> {
+
+    /**
+     * Derived query to fetch a Bank Account by Id from the DB.
+     */
+    BankAccount findByBankAccountNumber(Integer bankAccountNumber);
+
 }
