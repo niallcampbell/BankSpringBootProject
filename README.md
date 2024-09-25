@@ -3,7 +3,7 @@
 Project containing the basics of a Spring Boot API. 
 
 
-# Swagger
+## Swagger
 
 The API contract is declared in the bank-api.yml OpenAPI specification file. 
 
@@ -14,7 +14,7 @@ The API endpoints can be accessed via the Swagger UI when the app is running loc
 http://localhost:8080/swagger-ui/index.html
 
 
-# Database
+## Database
 
 The project will run with a local H2 Database. 
 
