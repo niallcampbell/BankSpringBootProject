@@ -84,13 +84,14 @@
 							<inputSpec>${project.basedir}/src/main/resources/bank-api.yml</inputSpec>
 							<output>${project.build.directory}/generated-sources/annotations</output>
 							<generatorName>spring</generatorName>
-							<generateModels>false</generateModels>
+							<generateModels>true</generateModels>
 							<generateModelTests>false</generateModelTests>
 							<generateApis>true</generateApis>
 							<generateApiTests>false</generateApiTests>
 							<schemaMappings>
 								customerModel=com.springbootproject.bank.entities.Customer,
-								bankAccountModel=com.springbootproject.bank.entities.BankAccount
+								bankAccountModel=com.springbootproject.bank.entities.BankAccount,
+								errorModel=com.springbootproject.bank.exceptions.BankError
 							</schemaMappings>
 							<configOptions>
 								<sourceFolder>src/main/java</sourceFolder>

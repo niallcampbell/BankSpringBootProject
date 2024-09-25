@@ -17,6 +17,19 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ListCustomersResponse'
+    post:
+      summary: 'Add a new Customer'
+      description: 'Endpoint to add a new Customer to the DB'
+      operationId: 'addCustomer'
+      tags:
+        - Bank
+      requestBody:
+        $ref: '#/components/requestBodies/AddCustomerRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/CustomerModelResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
   /customers/{customer-id}:
     get:
       summary: 'Retrieve a customer for a given ID'
@@ -28,7 +41,11 @@ paths:
         - $ref: '#/components/parameters/customer-id'
       responses:
         '200':
-          $ref: '#/components/responses/CustomerIdResponse'
+          $ref: '#/components/responses/CustomerModelResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
   /bankaccounts:
     get:
       summary: 'Retrieve a list of bank accounts'
@@ -51,7 +68,19 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/BankAccountIdResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
 components:
+  requestBodies:
+    AddCustomerRequest:
+      description: OK
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/addCustomerModel'
   responses:
     ListCustomersResponse:
       description: OK
@@ -59,7 +88,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/customersList'
-    CustomerIdResponse:
+    CustomerModelResponse:
       description: OK
       content:
         application/json:
@@ -77,6 +106,18 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/bankAccountModel'
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorModel'
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/errorModel'
   schemas:
     customersList:
       description: A list of the Customer objects
@@ -86,6 +127,16 @@ components:
     customerModel:
       type: object
       description: Links to the Customer.java class via the pom.xml
+    addCustomerModel:
+      type: object
+      description: Links to the Customer.java class via the pom.xml
+      properties:
+        customerName:
+          type: string
+          example: 'John Doe'
+        customerAge:
+          type: integer
+          example: 30
     bankAccountsList:
       description: A list of the Bank Account objects
       type: array
@@ -94,6 +145,9 @@ components:
     bankAccountModel:
       type: object
       description: Links to the BankAccount.java class via the pom.xml
+    errorModel:
+      type: object
+      description: Links to the BankError.java class via the pom.xml
   parameters:
     customer-id:
       name: customer-id
