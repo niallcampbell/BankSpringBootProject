@@ -36,8 +36,10 @@ Bank Account has a foreign key dependency on Customer.
 
 ## Endpoints
 
-* GET /customers
-* GET /customers/{customer-id}
-* GET /bankaccounts
-* GET /bankaccounts/{bankAccountNumber}
+* GET /customers - return a list of all customers
+* POST /customers - create a new customer
+* GET /customers/{customer-id} - return a specific customer
+* GET /bankaccounts - return a list of all bank accounts
+* POST /bankaccounts - create a new bank account
+* GET /bankaccounts/{bankAccountNumber} - return a specific bank account
 

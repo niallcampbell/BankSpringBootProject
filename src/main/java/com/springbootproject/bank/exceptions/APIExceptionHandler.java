@@ -32,4 +32,21 @@ public class APIExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(bankError, HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * Exception handler to return 400 Bad Request response when a BankBadRequestException
+     * is thrown.
+     *
+     * @param ex
+     * @return ResponseEntity with error details.
+     */
+    @ExceptionHandler(BankBadRequestException.class)
+    public ResponseEntity<Object> handleBankBadRequestException(BankBadRequestException ex) {
+
+        BankError bankError = new BankError();
+        bankError.setErrorCode(HttpStatus.BAD_REQUEST.value());
+        bankError.setErrorDescription(ex.getMessage());
+
+        return new ResponseEntity<>(bankError, HttpStatus.BAD_REQUEST);
+    }
+
 }

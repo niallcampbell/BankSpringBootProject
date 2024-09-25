@@ -26,4 +26,14 @@ public class APIExceptionHandlerTest {
         assertEquals(HttpStatus.NOT_FOUND.value(), responseEntity.getStatusCode().value());
     }
 
+    @Test
+    public void handleBankBadRequestExceptionTest() {
+
+        BankBadRequestException ex = new BankBadRequestException("Request body is empty");
+
+        ResponseEntity<Object> responseEntity = apiExceptionHandler.handleBankBadRequestException(ex);
+
+        assertEquals(HttpStatus.BAD_REQUEST.value(), responseEntity.getStatusCode().value());
+    }
+
 }
