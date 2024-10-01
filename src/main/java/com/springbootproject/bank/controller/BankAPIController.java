@@ -70,6 +70,10 @@ public class BankAPIController implements BankApi {
 
         if(requestBody == null) {
             throw new BankBadRequestException("Request body is empty");
+        } else if(requestBody.getCustomerName() == null) {
+            throw new BankBadRequestException("Customer name required");
+        } else if(requestBody.getCustomerAge() == null) {
+            throw new BankBadRequestException("Customer age required");
         }
 
         int newID = customerRepository.findMaxId() + 1;
